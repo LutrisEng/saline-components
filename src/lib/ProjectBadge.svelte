@@ -10,7 +10,7 @@
 
 	export let code: string;
 	export let name: string;
-	export let urlBase: string = 'https://lutris.engineering';
+	export let urlBase = 'https://lutris.engineering';
 
 	let infoElement: HTMLSpanElement;
 	let tooltipElement: HTMLSpanElement;
