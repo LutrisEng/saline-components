@@ -8,7 +8,8 @@
 
 	let infoElement: HTMLSpanElement;
 	let tooltipElement: HTMLSpanElement;
-	let showTooltip = false;
+	let showTooltipFromHover = false;
+	let showTooltipFromFocus = false;
 	let tooltipX: number, tooltipY: number;
 
 	function setTooltipLocation(x: number, y: number) {
@@ -29,23 +30,23 @@
 	}
 
 	function mouseOver(event: MouseEvent) {
-		showTooltip = true;
+		showTooltipFromHover = true;
 		setTooltipLocation(event.pageX, event.pageY);
 	}
 	function mouseLeave() {
-		showTooltip = false;
+		showTooltipFromHover = false;
 	}
 	function mouseMove(event: MouseEvent) {
 		setTooltipLocation(event.pageX, event.pageY);
 	}
 	function focus() {
-		showTooltip = true;
+		showTooltipFromFocus = true;
 		const rect = infoElement.getBoundingClientRect();
 		tooltipX = rect.left;
 		tooltipY = rect.top;
 	}
 	function blur() {
-		showTooltip = false;
+		showTooltipFromFocus = false;
 	}
 </script>
 
@@ -66,7 +67,7 @@
 		<Fa icon={faCircleInfo} />
 	</span>
 
-	{#if showTooltip}
+	{#if showTooltipFromFocus || showTooltipFromHover}
 		<span
 			class="tooltip"
 			role="tooltip"
