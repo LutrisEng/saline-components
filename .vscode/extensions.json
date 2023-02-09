@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"svelte.svelte-vscode",
+		"zixuanchen.vitest-explorer",
+		"redhat.vscode-yaml"
+	]
+}

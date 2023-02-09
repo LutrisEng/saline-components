@@ -4,5 +4,16 @@
     "ghcr.io/devcontainers/features/node:1": {
       "version": "16"
     }
-  }
+},
+"customizations": {
+	"vscode": {
+		"extensions": [
+			"dbaeumer.vscode-eslint",
+			"esbenp.prettier-vscode",
+			"svelte.svelte-vscode",
+			"ZixuanChen.vitest-explorer",
+			"redhat.vscode-yaml"
+		]
+	}
+}
 }
