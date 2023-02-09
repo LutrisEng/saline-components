@@ -1,6 +1,11 @@
 {
-	"name": "saline-components",
+	"name": "@lutris/saline-components",
 	"version": "0.0.1",
+	"license": "ISC",
+	"homepage": "https://github.com/lutriseng/saline-components",
+	"author": "Piper McCorkle <piper@lutris.engineering>",
+	"repository": "github:lutriseng/saline-components",
+	"private": false,
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package",
