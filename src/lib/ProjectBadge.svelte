@@ -10,6 +10,7 @@
 
 	export let code: string;
 	export let name: string;
+	export let urlBase: string = 'https://lutris.engineering';
 
 	let infoElement: HTMLSpanElement;
 	let tooltipElement: HTMLSpanElement;
@@ -71,9 +72,7 @@
 
 <span class="sc-project-badge">
 	<LutrisIcon fill="currentColor" class="sc-project-badge-icon" />
-	<a class="sc-project-badge-code" href="https://lutris.engineering/projects/{code.toLowerCase()}"
-		>{code}</a
-	>
+	<a class="sc-project-badge-code" href="{urlBase}/projects/{code.toLowerCase()}">{code}</a>
 	<span
 		class="sc-project-badge-info"
 		class:sc-project-badge-info-active={showTooltipFromHover || showTooltipFromFocus}
