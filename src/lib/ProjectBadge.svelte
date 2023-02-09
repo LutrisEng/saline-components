@@ -1,7 +1,12 @@
 <script lang="ts">
 	import Fa from 'svelte-fa';
 	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+	import { createPopper, type Instance as PopperInstance } from '@popperjs/core/lib/popper-lite';
+	import flip from '@popperjs/core/lib/modifiers/flip';
+	import preventOverflow from '@popperjs/core/lib/modifiers/preventOverflow';
+	import offset from '@popperjs/core/lib/modifiers/offset';
 	import LutrisIcon from './LutrisIcon.svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	export let code: string;
 	export let name: string;
@@ -10,55 +15,71 @@
 	let tooltipElement: HTMLSpanElement;
 	let showTooltipFromHover = false;
 	let showTooltipFromFocus = false;
-	let tooltipX: number, tooltipY: number;
 
-	function setTooltipLocation(x: number, y: number) {
-		const width = 300;
-		const height = tooltipElement ? tooltipElement.getBoundingClientRect().height : 0;
-		const tryX = x - width / 2;
-		if (tryX < 0) {
-			tooltipX = 0;
-		} else {
-			tooltipX = tryX;
-		}
-		const documentHeight = document.documentElement.scrollHeight;
-		if (y + 10 - height < 0) {
-			tooltipY = documentHeight - height - 35;
-		} else {
-			tooltipY = documentHeight - y + 10;
-		}
+	async function show() {
+		await popper?.setOptions((options) => ({
+			...options,
+			modifiers: [...(options.modifiers ?? []), { name: 'eventListeners', enabled: true }]
+		}));
 	}
 
-	function mouseOver(event: MouseEvent) {
+	async function hide() {
+		await popper?.setOptions((options) => ({
+			...options,
+			modifiers: [...(options.modifiers ?? []), { name: 'eventListeners', enabled: false }]
+		}));
+	}
+
+	function mouseOver() {
 		showTooltipFromHover = true;
-		setTooltipLocation(event.pageX, event.pageY);
+		show();
 	}
 	function mouseLeave() {
 		showTooltipFromHover = false;
-	}
-	function mouseMove(event: MouseEvent) {
-		setTooltipLocation(event.pageX, event.pageY);
+		hide();
 	}
 	function focus() {
 		showTooltipFromFocus = true;
-		const rect = infoElement.getBoundingClientRect();
-		tooltipX = rect.left;
-		tooltipY = rect.top;
+		show();
 	}
 	function blur() {
 		showTooltipFromFocus = false;
+		hide();
 	}
+
+	let popper: PopperInstance | undefined;
+
+	onMount(() => {
+		popper = createPopper(infoElement, tooltipElement, {
+			modifiers: [
+				flip,
+				preventOverflow,
+				{
+					...offset,
+					options: {
+						offset: [0, 10]
+					}
+				}
+			]
+		});
+	});
+
+	onDestroy(() => {
+		popper?.destroy();
+	});
 </script>
 
-<span class="project-badge">
-	<LutrisIcon fill="currentColor" class="icon" />
-	<a class="code" href="https://lutris.engineering/projects/{code.toLowerCase()}">{code}</a>
+<span class="sc-project-badge">
+	<LutrisIcon fill="currentColor" class="sc-project-badge-icon" />
+	<a class="sc-project-badge-code" href="https://lutris.engineering/projects/{code.toLowerCase()}"
+		>{code}</a
+	>
 	<span
-		class="info"
+		class="sc-project-badge-info"
+		class:sc-project-badge-info-active={showTooltipFromHover || showTooltipFromFocus}
 		role="button"
 		on:mouseover={mouseOver}
 		on:mouseleave={mouseLeave}
-		on:mousemove={mouseMove}
 		on:focus={focus}
 		on:blur={blur}
 		tabindex="0"
@@ -66,25 +87,26 @@
 	>
 		<Fa icon={faCircleInfo} />
 	</span>
+</span>
 
-	{#if showTooltipFromFocus || showTooltipFromHover}
-		<span
-			class="tooltip"
-			role="tooltip"
-			style="bottom: {tooltipY}px; left: {tooltipX}px;"
-			bind:this={tooltipElement}
-		>
-			<slot name="tooltip">
-				<span class="code">{code}</span> is the Lutris project code for <em>{name}</em>, used both
-				internally and externally as a shorthand to refer to this project. Click
-				<span class="code">{code}</span> in the badge to go to <em>{name}</em>'s project page.
-			</slot>
-		</span>
-	{/if}
+<span
+	class="sc-project-badge-tooltip"
+	class:sc-project-badge-tooltip-show={showTooltipFromHover || showTooltipFromFocus}
+	role="tooltip"
+	bind:this={tooltipElement}
+>
+	<slot name="tooltip">
+		<span class="sc-project-badge-code">{code}</span> is the Lutris project code for
+		<em>{name}</em>, used both internally and externally as a shorthand to refer to this project.
+		Click
+		<span class="sc-project-badge-code">{code}</span> in the badge to go to <em>{name}</em>'s
+		project page.
+	</slot>
 </span>
 
 <style>
-	.project-badge {
+	.sc-project-badge {
+		cursor: pointer;
 		background-color: #469b91;
 		border-radius: 0.375rem;
 		color: white;
@@ -93,27 +115,30 @@
 		font-weight: 700;
 	}
 
-	.code {
-		font-family: 'Overpass Mono', monospace;
-		text-decoration: none;
+	.sc-project-badge a {
 		color: inherit;
+		text-decoration: none;
+	}
+
+	.sc-project-badge-code {
+		font-family: 'Overpass Mono', monospace;
 	}
 
 	@supports (font-variation-settings: normal) {
-		.project-badge {
+		.sc-project-badge {
 			font-variation-settings: 'wght' 600;
 		}
 
-		.code {
+		.sc-project-badge-code {
 			font-family: 'Overpass MonoVariable', 'Overpass Mono', monospace;
 		}
 	}
 
-	.project-badge :global(.icon) {
+	.sc-project-badge :global(.sc-project-badge-icon) {
 		top: -0.1em;
 	}
 
-	.info {
+	.sc-project-badge-info {
 		opacity: 0.75;
 		margin-left: 0.3em;
 		font-size: 0.8em;
@@ -121,13 +146,22 @@
 		top: -0.1em;
 	}
 
-	.tooltip {
-		position: absolute;
+	.sc-project-badge-info-active {
+		opacity: 1;
+	}
+
+	.sc-project-badge-tooltip {
+		display: none;
+		font-size: 12px;
+		font-weight: normal;
 		background-color: white;
 		color: black;
-		font-weight: normal;
-		width: 300px;
+		max-width: 300px;
 		border: 1px dashed black;
 		padding: 4px;
+		z-index: 100;
+	}
+	.sc-project-badge-tooltip.sc-project-badge-tooltip-show {
+		display: block;
 	}
 </style>

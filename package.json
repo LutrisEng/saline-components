@@ -1,6 +1,6 @@
 {
 	"name": "@lutris/saline-components",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"license": "ISC",
 	"homepage": "https://github.com/lutriseng/saline-components",
 	"author": "Piper McCorkle <piper@lutris.engineering>",
@@ -32,12 +32,17 @@
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
+		"vite-imagetools": "^4.0.18",
 		"vitest": "^0.25.3"
 	},
 	"type": "module",
 	"dependencies": {
 		"@fontsource/overpass-mono": "^4.5.11",
 		"@fortawesome/free-solid-svg-icons": "^6.3.0",
+		"@popperjs/core": "^2.11.6",
 		"svelte-fa": "^3.0.3"
+	},
+	"peerDependencies": {
+		"svelte": "^3.54.0"
 	}
 }
