@@ -1,5 +1,9 @@
 <script lang="ts">
 	import '$lib';
+	import 'bootstrap/dist/css/bootstrap.css';
+	import { Container } from 'sveltestrap';
 </script>
 
-<slot />
+<Container>
+	<slot />
+</Container>

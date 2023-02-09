@@ -161,6 +161,7 @@
 		padding: 4px;
 		z-index: 100;
 	}
+
 	.sc-project-badge-tooltip.sc-project-badge-tooltip-show {
 		display: block;
 	}
