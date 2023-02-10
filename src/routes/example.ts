@@ -5,9 +5,9 @@ export default `<script lang="ts">
     import { Container, Heading, ProjectBadge } from '@lutris/saline-components';
 </script>
 
-<LutrisTheme />
-
-<Container>
-    <Heading level={1}>My Page</Heading>
-    <ProjectBadge code="FBOX" name="Fleetbox" />
-</Container>`;
+<LutrisTheme>
+    <Container>
+        <Heading level={1}>My Page</Heading>
+        <ProjectBadge code="FBOX" name="Fleetbox" />
+    </Container>
+</LutrisTheme>`;

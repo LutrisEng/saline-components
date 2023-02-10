@@ -1,6 +1,6 @@
 {
 	"name": "@lutris/saline-components",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"license": "ISC",
 	"homepage": "https://github.com/lutriseng/saline-components",
 	"author": "Piper McCorkle <piper@lutris.engineering>",

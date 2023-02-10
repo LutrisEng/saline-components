@@ -7,3 +7,5 @@
 	import '@fontsource/overpass-mono/variable.css';
 	import './lutris.css';
 </script>
+
+<slot />
