@@ -1,7 +1,6 @@
 <script lang="ts">
-	import '$lib';
-	import 'bootstrap/dist/css/bootstrap.css';
-	import { Container } from 'sveltestrap';
+	import '$lib/themes/lutris';
+	import { Container } from '$lib';
 </script>
 
 <Container>

@@ -1,0 +1,60 @@
+:root {
+	--sc-colors-brand: #469b91;
+	--sc-colors-brand-contrast: var(--sc-colors-light);
+	--sc-colors-primary: #347deb;
+	--sc-colors-primary-contrast: var(--sc-colors-light);
+	--sc-colors-secondary: #223940;
+	--sc-colors-secondary-contrast: var(--sc-colors-light);
+
+	--sc-colors-dark: #1d2430;
+	--sc-colors-light: #dfe3eb;
+
+	--sc-colors-foreground: var(--sc-colors-dark);
+	--sc-colors-background: var(--sc-colors-light);
+
+	--sc-heading-font-family: Orelega One, -apple-system, BlinkMacSystemFont, avenir next, avenir,
+		segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+	--sc-body-font-family: Ovo, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+		Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+	--sc-ui-font-family: Readex Pro, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+		helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+	--sc-mono-font-family: Overpass Mono, ui-monospace, Menlo, Monaco, 'Cascadia Mono',
+		'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+		'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+	--sc-heading-font-weight: 500;
+	--sc-heading-line-height: 1.2;
+	--sc-heading-font-size: 2rem;
+	--sc-heading-margin-bottom: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--sc-colors-foreground: var(--sc-colors-light);
+		--sc-colors-background: var(--sc-colors-dark);
+	}
+}
+
+@supports (font-variation-settings: normal) {
+	.sc-project-badge {
+		font-variation-settings: 'wght' 600;
+	}
+
+	:root {
+		--sc-mono-font-family: Overpass MonoVariable, Overpass Mono, ui-monospace, Menlo, Monaco,
+			'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace',
+			'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+	}
+}
+
+@media (min-width: 1200px) {
+	:root {
+		--sc-heading-font-size: calc(1.325rem + 0.9vw);
+	}
+}
+
+body {
+	color: var(--sc-colors-foreground);
+	background-color: var(--sc-colors-background);
+	font-family: var(--sc-body-font-family);
+}

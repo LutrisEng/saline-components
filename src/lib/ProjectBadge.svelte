@@ -1,4 +1,6 @@
 <script lang="ts">
+	import '@fontsource/overpass-mono';
+	import '@fontsource/overpass-mono/variable.css';
 	import Fa from 'svelte-fa';
 	import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 	import { createPopper, type Instance as PopperInstance } from '@popperjs/core/lib/popper-lite';
@@ -105,31 +107,29 @@
 
 <style>
 	.sc-project-badge {
-		cursor: pointer;
-		background-color: #469b91;
+		cursor: default;
+		background-color: var(--sc-colors-brand, #469b91);
 		border-radius: 0.375rem;
-		color: white;
+		color: var(--sc-colors-brand-contrast, white);
 		padding: 0.35em 0.65em;
 		font-size: 12px;
-		font-weight: 700;
 	}
 
 	.sc-project-badge a {
+		cursor: pointer;
 		color: inherit;
 		text-decoration: none;
 	}
 
 	.sc-project-badge-code {
 		font-family: 'Overpass Mono', monospace;
+		font-weight: 600;
 	}
 
 	@supports (font-variation-settings: normal) {
-		.sc-project-badge {
-			font-variation-settings: 'wght' 600;
-		}
-
 		.sc-project-badge-code {
 			font-family: 'Overpass MonoVariable', 'Overpass Mono', monospace;
+			font-variation-settings: 'wght' 600;
 		}
 	}
 
@@ -138,6 +138,7 @@
 	}
 
 	.sc-project-badge-info {
+		cursor: pointer;
 		opacity: 0.75;
 		margin-left: 0.3em;
 		font-size: 0.8em;
@@ -153,10 +154,10 @@
 		display: none;
 		font-size: 12px;
 		font-weight: normal;
-		background-color: white;
-		color: black;
+		background-color: var(--sc-colors-foreground, white);
+		color: var(--sc-colors-background, black);
 		max-width: 300px;
-		border: 1px dashed black;
+		border: 1px dashed var(--sc-colors-background, black);
 		padding: 4px;
 		z-index: 100;
 	}

@@ -1,19 +1,22 @@
 <script>
-	import LutrisIcon from '$lib/LutrisIcon.svelte';
-	import LutrisLogo from '$lib/LutrisLogo.svelte';
-	import ProjectBadge from '$lib/ProjectBadge.svelte';
+	import { Heading, Link, CodeBlock, types } from '$lib';
+	import example from './example';
 </script>
 
-<h1>Saline Components</h1>
+<Heading level={1} anchor="saline-components">Saline Components</Heading>
 <p>Components used by Lutris</p>
 
-<h2>Lutris Icon</h2>
-<p>Here is a Lutris icon in a paragraph: <LutrisIcon /></p>
-<h3>Here is a Lutris icon in a header: <LutrisIcon /></h3>
+<ul>
+	<li><Link href="/Button" color={types.Color.Brand}>Button</Link></li>
+	<li><Link href="/CodeBlock" color={types.Color.Brand}>CodeBlock</Link></li>
+	<li><Link href="/Container" color={types.Color.Brand}>Container</Link></li>
+	<li><Link href="/Heading" color={types.Color.Brand}>Heading</Link></li>
+	<li><Link href="/ImagetoolsPicture" color={types.Color.Brand}>ImagetoolsPicture</Link></li>
+	<li><Link href="/Link" color={types.Color.Brand}>Link</Link></li>
+	<li><Link href="/LutrisIcon" color={types.Color.Brand}>LutrisIcon</Link></li>
+	<li><Link href="/LutrisLogo" color={types.Color.Brand}>LutrisLogo</Link></li>
+	<li><Link href="/ProjectBadge" color={types.Color.Brand}>ProjectBadge</Link></li>
+	<li><Link href="/VSpacer" color={types.Color.Brand}>VSpacer</Link></li>
+</ul>
 
-<h2>Lutris Logo</h2>
-<LutrisLogo width="150px" />
-
-<h2>Project Badge</h2>
-<p><ProjectBadge code="FBOX" name="Fleetbox" /></p>
-<p><ProjectBadge code="FLOW" name="Accuflow" /></p>
+<CodeBlock code={example} lang="svelte" />

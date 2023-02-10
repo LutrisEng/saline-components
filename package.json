@@ -23,9 +23,10 @@
 		"@sveltejs/adapter-static": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",
 		"@sveltejs/package": "^1.0.0",
+		"@types/prismjs": "^1.26.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
-		"bootstrap": "^5.2.3",
+		"autoprefixer": "^10.4.13",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -33,7 +34,7 @@
 		"prettier-plugin-svelte": "^2.8.1",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
-		"sveltestrap": "^5.10.0",
+		"svelte-preprocess": "^5.0.1",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
@@ -42,12 +43,19 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/orelega-one": "^4.5.10",
 		"@fontsource/overpass-mono": "^4.5.11",
+		"@fontsource/ovo": "^4.5.10",
+		"@fontsource/readex-pro": "^4.5.13",
 		"@fortawesome/free-solid-svg-icons": "^6.3.0",
 		"@popperjs/core": "^2.11.6",
+		"normalize.css": "^8.0.1",
+		"prism-svelte": "^0.5.0",
+		"prismjs": "^1.29.0",
 		"svelte-fa": "^3.0.3"
 	},
 	"peerDependencies": {
-		"svelte": "^3.54.0"
+		"svelte": "^3.54.0",
+		"vite-imagetools": "^4.0.18"
 	}
 }
