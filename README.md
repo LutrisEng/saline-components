@@ -7,7 +7,7 @@ In your Svelte files:
 ```svelte
 <script lang="ts">
 	// Import a theme in your layout
-	import LutrisTheme from '@lutris/saline-components/themes/lutris.svelte';
+	import LutrisTheme from '@lutris/saline-components/themes/LutrisTheme.svelte';
 	// Import components on your pages
 	import { Container, Heading, ProjectBadge } from '@lutris/saline-components';
 </script>
