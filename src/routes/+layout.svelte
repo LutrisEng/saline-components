@@ -1,8 +1,9 @@
 <script lang="ts">
 	import '$lib/themes/lutris';
-	import { Container } from '$lib';
+	import { Container, LoadingIndicator } from '$lib';
 </script>
 
+<LoadingIndicator />
 <Container>
 	<slot />
 </Container>
