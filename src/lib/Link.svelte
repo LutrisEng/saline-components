@@ -2,13 +2,15 @@
 	import { base } from '$app/paths';
 	import { Color } from './types';
 
+	let klass = '';
+	export { klass as class };
 	export let href: string;
 	export let color: Color = Color.Primary;
 	$: realHref = href.startsWith('/') ? `${base}${href}` : href;
 </script>
 
 <a
-	class="sc-link"
+	class="sc-link {klass}"
 	href={realHref}
 	class:sc-link-brand={color === Color.Brand}
 	class:sc-link-primary={color === Color.Primary}
