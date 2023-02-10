@@ -4,6 +4,7 @@
 
 	let klass = '';
 	export { klass as class };
+	export let rel: string | undefined = undefined;
 	export let href: string;
 	export let color: Color = Color.Primary;
 	$: realHref = href.startsWith('/') ? `${base}${href}` : href;
@@ -12,6 +13,7 @@
 <a
 	class="sc-link {klass}"
 	href={realHref}
+	{rel}
 	class:sc-link-brand={color === Color.Brand}
 	class:sc-link-primary={color === Color.Primary}
 	class:sc-link-secondary={color === Color.Secondary}
