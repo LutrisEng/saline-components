@@ -3,6 +3,7 @@ export { default as CodeBlock } from './CodeBlock.svelte';
 export { default as Container } from './Container.svelte';
 export { default as Heading } from './Heading.svelte';
 export { default as ImagetoolsPicture } from './ImagetoolsPicture.svelte';
+export { default as InlineCode } from './InlineCode.svelte';
 export { default as Link } from './Link.svelte';
 export { default as LoadingIndicator } from './LoadingIndicator.svelte';
 export { default as LutrisIcon } from './LutrisIcon.svelte';

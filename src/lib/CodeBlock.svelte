@@ -8,3 +8,9 @@
 </script>
 
 <pre><code>{@html Prism.highlight(code, Prism.languages[lang], lang)}</code></pre>
+
+<style>
+	code {
+		font-family: var(--sc-mono-font-family);
+	}
+</style>

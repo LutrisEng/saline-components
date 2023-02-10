@@ -12,6 +12,7 @@
 	<li><Link href="/Container" color={types.Color.Brand}>Container</Link></li>
 	<li><Link href="/Heading" color={types.Color.Brand}>Heading</Link></li>
 	<li><Link href="/ImagetoolsPicture" color={types.Color.Brand}>ImagetoolsPicture</Link></li>
+	<li><Link href="/InlineCode" color={types.Color.Brand}>InlineCode</Link></li>
 	<li><Link href="/Link" color={types.Color.Brand}>Link</Link></li>
 	<li><Link href="/LoadingIndicator" color={types.Color.Brand}>LoadingIndicator</Link></li>
 	<li><Link href="/LutrisIcon" color={types.Color.Brand}>LutrisIcon</Link></li>
